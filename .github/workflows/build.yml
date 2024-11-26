@@ -84,7 +84,7 @@ jobs:
   #         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   prebuild:
-    if: ${{ github.event_name == 'release' }}
+    # if: ${{ github.event_name == 'release' }}
     strategy:
       fail-fast: false
       matrix:
@@ -123,7 +123,7 @@ jobs:
           ${{ env.ELECTRON_BUILD_CMD }} --arch arm64 -u ${{ secrets.GITHUB_TOKEN }}
 
   prebuild-alpine:
-    if: ${{ github.event_name == 'release' }}
+    # if: ${{ github.event_name == 'release' }}
     strategy:
       fail-fast: false
     name: Prebuild on alpine
@@ -137,7 +137,7 @@ jobs:
       - run: ${{ env.NODE_BUILD_CMD }} -u ${{ secrets.GITHUB_TOKEN }}
 
   prebuild-alpine-arm:
-    if: ${{ github.event_name == 'release' }}
+    # if: ${{ github.event_name == 'release' }}
     strategy:
       fail-fast: false
       matrix:
