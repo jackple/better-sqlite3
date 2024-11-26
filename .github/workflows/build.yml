@@ -12,6 +12,10 @@ on:
       - released
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+  pull-requests: write
+
 env:
   # See https://github.com/nodejs/release#release-schedule
   # Node.js v16 EOL = 2023-09-11. v21 EOL = 2024-06-01.
