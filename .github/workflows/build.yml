@@ -103,6 +103,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
+      - run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
       - if: ${{ startsWith(matrix.os, 'windows') }}
         run: pip.exe install setuptools
       - if: ${{ startsWith(matrix.os, 'macos') }}
@@ -119,8 +122,6 @@ jobs:
       - run: ${{ env.ELECTRON_BUILD_CMD }} -u ${{ secrets.GITHUB_TOKEN }}
       - if: matrix.os == 'windows-2019'
         run: |
-          echo "Repository: ${{ github.repository }}"
-          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
           ${{ env.NODE_BUILD_CMD }} --arch ia32 -u ${{ secrets.GITHUB_TOKEN }}
           ${{ env.NO_V18_NODE_BUILD_CMD }} --arch arm64 -u ${{ secrets.GITHUB_TOKEN }}
           ${{ env.ELECTRON_BUILD_CMD }} --arch ia32 -u ${{ secrets.GITHUB_TOKEN }}
